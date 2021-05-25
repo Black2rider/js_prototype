@@ -35,6 +35,32 @@ storage.removeItem('Пролонгер');
 console.log(storage.getItems()); // ["Нанитоиды", "Антигравитатор", "Дроид"]
 
 
+Задача. Хранилище 2.0
+Задание
+Выполни рефакторинг заменив функцию-конструктор Storage на класс с методами. Сделай так, чтобы свойство items было приватным.
+
+class Storage {
+  #items;
+  
+  constructor(items) {
+    this.#items = items; 
+  }
+  
+  getItems () {
+    return this.#items; 
+  }
+  
+  addItem (newItem) {
+    this.#items.push(newItem); 
+  }
+  
+  removeItem(item) {
+    const itemIndex = this.#items.indexOf(item);
+    this.#items.splice(itemIndex, 1);
+  }
+}
+
+
 
 2.  Конструктор строк
 Задание
@@ -79,3 +105,32 @@ console.log(builder.getValue()); // '^.^'
 builder.padBoth('=');
 console.log(builder.getValue()); // '=^.^='
 
+
+**Задача. Конструктор строк 2.0
+Задание
+Выполни рефакторинг заменив функцию-конструктор StringBuilder на класс с методами. Сделай так, чтобы свойство value было приватным.**
+
+class StringBuilder {
+   #value;
+  
+   constructor (baseValue) {
+       this.#value = baseValue;
+   }
+  
+   getValue () {
+      return this.#value; 
+   }
+  
+   padEnd (str) {
+      this.#value += str;
+   }
+  
+   padStart (str) {
+      this.#value = str + this.#value;
+   }
+  
+   padBoth (str) {
+      this.padStart(str);
+      this.padEnd(str); 
+   }
+}
